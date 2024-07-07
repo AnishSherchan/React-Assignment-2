@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Container from "./components/Container/PageContainer";
+import ControlledForm from "./components/ControlledForm/Form";
+import Counter from "./components/Counter/Counter";
+import SearchFilter from "./components/SearchFilter/SearchFilter";
+import DemoTab from "./components/Tab/DemoTab";
+import Todo from "./components/Todo/Todo";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const submitHandler = (formData) => {
+    alert(`Form Data collected of ${formData.name}
+message ${formData.message}
+      `);
+  };
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Container>
+      <Counter />
+      <hr className="border border-gray-200" />
+      <Todo />
+      <hr className="border border-gray-200" />
+      <ControlledForm submitHandler={submitHandler} />
+      <hr className="border border-gray-200" />
+      <DemoTab />
+      <hr className="border border-gray-200" />
+      <SearchFilter />
+    </Container>
+  );
 }
 
-export default App
+export default App;
